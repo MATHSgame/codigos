@@ -1,0 +1,68 @@
+input2 = 0
+conta1 = 0
+conta2 = 0
+result = 0
+errada = 0
+
+def on_button_pressed_a():
+    global input2, conta1, conta2, result, errada
+    input2 = 0
+    conta1 = randint(1, 10)
+    conta2 = randint(1, 10)
+    result = conta1 + conta2
+    errada = randint(0, 2)
+    basic.show_string("" + str((conta1)))
+    basic.show_string("+")
+    basic.show_string("" + str((conta2)))
+    basic.show_string("=")
+    basic.show_string("" + str((result + errada)))
+    basic.show_string("?")
+    if errada == 0:
+        input2 = 1
+    else:
+        input2 = 2
+input.on_button_pressed(Button.A, on_button_pressed_a)
+
+def on_pin_pressed_p2():
+    if input2 == 0:
+        basic.show_string("A")
+    else:
+        if input2 == 2:
+            basic.show_leds("""
+                . . . . .
+                                . . . # .
+                                # . # . .
+                                . # . . .
+                                . . . . .
+            """)
+        else:
+            basic.show_leds("""
+                # . . . #
+                                . # . # .
+                                . . # . .
+                                . # . # .
+                                # . . . #
+            """)
+input.on_pin_pressed(TouchPin.P2, on_pin_pressed_p2)
+
+def on_pin_pressed_p1():
+    if input2 == 0:
+        basic.show_string("A")
+    else:
+        if input2 == 1:
+            basic.show_leds("""
+                . . . . .
+                                . . . # .
+                                # . # . .
+                                . # . . .
+                                . . . . .
+            """)
+        else:
+            basic.show_leds("""
+                # . . . #
+                                . # . # .
+                                . . # . .
+                                . # . # .
+                                # . . . #
+            """)
+input.on_pin_pressed(TouchPin.P1, on_pin_pressed_p1)
