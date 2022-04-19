@@ -1,0 +1,69 @@
+let input2 = 0
+let conta1 = 0
+let conta2 = 0
+let result = 0
+let errada = 0
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    
+    input2 = 0
+    conta1 = randint(1, 10)
+    conta2 = randint(1, 10)
+    result = conta1 + conta2
+    errada = randint(0, 2)
+    basic.showString("" + ("" + conta1))
+    basic.showString("+")
+    basic.showString("" + ("" + conta2))
+    basic.showString("=")
+    basic.showString("" + ("" + (result + errada)))
+    basic.showString("?")
+    if (errada == 0) {
+        input2 = 1
+    } else {
+        input2 = 2
+    }
+    
+})
+input.onPinPressed(TouchPin.P2, function on_pin_pressed_p2() {
+    if (input2 == 0) {
+        basic.showString("A")
+    } else if (input2 == 2) {
+        basic.showLeds(`
+                . . . . .
+                                . . . # .
+                                # . # . .
+                                . # . . .
+                                . . . . .
+            `)
+    } else {
+        basic.showLeds(`
+                # . . . #
+                                . # . # .
+                                . . # . .
+                                . # . # .
+                                # . . . #
+            `)
+    }
+    
+})
+input.onPinPressed(TouchPin.P1, function on_pin_pressed_p1() {
+    if (input2 == 0) {
+        basic.showString("A")
+    } else if (input2 == 1) {
+        basic.showLeds(`
+                . . . . .
+                                . . . # .
+                                # . # . .
+                                . # . . .
+                                . . . . .
+            `)
+    } else {
+        basic.showLeds(`
+                # . . . #
+                                . # . # .
+                                . . # . .
+                                . # . # .
+                                # . . . #
+            `)
+    }
+    
+})
